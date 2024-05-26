@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('speech_ones', function (Blueprint $table) {
             $table->id();
+            $table->string('title')->nullable();
+            $table->text('description')->nullable();
+            $table->string('image', 100)->nullable();
             $table->timestamps();
         });
     }

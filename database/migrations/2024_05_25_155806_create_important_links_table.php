@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('important_links', function (Blueprint $table) {
             $table->id();
+            $table->string('title')->nullable();
+            $table->string('url')->nullable();
+            $table->string('icon')->nullable();
             $table->timestamps();
         });
     }

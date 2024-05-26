@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('school_histories', function (Blueprint $table) {
             $table->id();
+            //$table->foreignId('school_id')->constrained()->cascadeOnDelete();
+            $table->string('title')->nullable();
+            $table->text('description')->nullable();
+            $table->string('image', 100)->nullable();
             $table->timestamps();
         });
     }
