@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class SpeechTwo extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'title',
+        'description',
+        'image'
+    ];
+
 }

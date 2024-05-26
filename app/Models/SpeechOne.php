@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class SpeechOne extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'title',
+        'description',
+        'image'
+    ];
+
 }

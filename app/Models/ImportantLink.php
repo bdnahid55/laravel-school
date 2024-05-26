@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class ImportantLink extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'title',
+        'url',
+        'icon'
+    ];
+
 }

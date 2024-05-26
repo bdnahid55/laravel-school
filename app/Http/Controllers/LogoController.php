@@ -31,13 +31,7 @@ class LogoController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Logo $logo)
-    {
-        //
-    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -55,11 +49,5 @@ class LogoController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Logo $logo)
-    {
-        //
-    }
+
 }
