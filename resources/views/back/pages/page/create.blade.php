@@ -1,12 +1,13 @@
-@extends('back.layout.pages-layout')
-@section('pageTitle', isset($pageTitle) ? $pageTitle : 'Update School Logo')
+@extends('back.layout.editor-pages-layout')
+@section('pageTitle', isset($pageTitle) ? $pageTitle : 'Create Page')
 @section('content')
-    {{-- --- --}}
+    {{-- main content --}}
 
-    <div class="row clearfix">
+     <div class="row clearfix">
         <div class="col-sm-12 mb-30">
-            <!-- alert -->
             <div class="card-body">
+
+                <!-- alert -->
                 <?php if( Session::get('success') != null){ ?>
 
                 <div class="alert alert-success alert-dismissible" role="alert">
@@ -33,6 +34,7 @@
                 </div>
                 <?php Session::put('failed',null); } ?>
                 <!-- end alert -->
+
                 {{-- alert message --}}
                 <div id="success_message"></div>
 
@@ -40,35 +42,50 @@
                     <div class="card-header">
                         <div class="row align-items-center">
                             <div class="col-12">
-                                <i class="fas fa-table me-1"></i>Update School Logo
+                                <i class="fas fa-table me-1"></i>Create new page
                             </div>
                         </div>
                     </div>
+
                     <div class="card-body">
-                        <form action="{{ route('admin.update-logo') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('admin.page.insert-page') }}" method="POST" enctype="multipart/form-data">
                             @csrf
+
                             <div class="form-group mb-3">
-                                <label for="">Alterative name</label>
-                                <input type="text" name="name" value="{{ $Logo->name }}" class="form-control"
-                                    required>
-                                @error('name')
+                                <label for="">Page Titile</label>
+                                <input type="text" name="title" class="form-control" value="{{ old('title') }}" placeholder="Page name" required>
+                                @error('title')
                                     <div style="color: red">{{ $message }}</div><br>
                                 @enderror
-
                             </div>
 
                             <div class="form-group">
-                                <label><u>Select new School Logo</u></label><br>
-                                Old Image: <img src="{{url('uploads/logo',$Logo->image)}}"> <br><br>
+                                <label>Description</label><br>
+                                <textarea id="summernote" name="content"> {{ old('content') }}</textarea>
 
-                                <input type="file" name="image" class="form-control-file form-control height-auto">
-                                @error('image')
+                                <script>
+                                    $('#summernote').summernote({
+                                      placeholder: 'Write page content',
+                                      tabsize: 2,
+                                      height: 300,
+                                      toolbar: [
+                                        ['style', ['style']],
+                                        ['font', ['bold', 'underline', 'clear']],
+                                        ['color', ['color']],
+                                        ['para', ['ul', 'ol', 'paragraph']],
+                                        ['table', ['table']],
+                                        ['insert', ['link', 'picture', 'video']],
+                                        ['view', ['fullscreen', 'codeview', 'help']]
+                                      ]
+                                    });
+                                  </script>
+                                @error('content')
                                     <div style="color: red">{{ $message }}</div><br>
                                 @enderror
                             </div>
 
                             <div class="form-group mb-3">
-                                <button type="submit" class="btn btn-primary">Update</button>
+                                <button type="submit" class="btn btn-primary">Create</button>
                             </div>
 
                         </form>
@@ -82,9 +99,7 @@
 
 
     @push('scripts')
-        <script>
-            //$(document).ready(function() {
+        {{-- <script>
             //
-            //});
-        </script>
+        </script> --}}
     @endpush

@@ -23,6 +23,8 @@
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/back/vendors/styles/core.css" />
     <link rel="stylesheet" type="text/css" href="/back/vendors/styles/icon-font.min.css" />
+    <link rel="stylesheet" type="text/css" href="/back/src/plugins/datatables/css/dataTables.bootstrap4.min.css" />
+    <link rel="stylesheet" type="text/css" href="/back/src/plugins/datatables/css/responsive.bootstrap4.min.css" />
     <link rel="stylesheet" type="text/css" href="/back/vendors/styles/style.css" />
     @stack('stylesheets')
 </head>
@@ -339,9 +341,7 @@
     <div class="main-container">
         <div class="pd-ltr-20 xs-pd-20-10">
             <div class="min-height-200px">
-                <div class="pd-20 bg-white border-radius-4 box-shadow mb-30">
-                    @yield('content')
-                </div>
+                @yield('content')
             </div>
             <div class="footer-wrap pd-20 mb-20 card-box">
                 &copy; Copyright by
@@ -355,6 +355,22 @@
     <script src="/back/vendors/scripts/script.min.js"></script>
     <script src="/back/vendors/scripts/process.js"></script>
     <script src="/back/vendors/scripts/layout-settings.js"></script>
+    <script src="/back/src/plugins/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="/back/src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script src="/back/src/plugins/datatables/js/dataTables.responsive.min.js"></script>
+    <script src="/back/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
+    <!-- buttons for Export datatable -->
+    <script src="/back/src/plugins/datatables/js/dataTables.buttons.min.js"></script>
+    <script src="/back/src/plugins/datatables/js/buttons.bootstrap4.min.js"></script>
+    <script src="/back/src/plugins/datatables/js/buttons.print.min.js"></script>
+    <script src="/back/src/plugins/datatables/js/buttons.html5.min.js"></script>
+    <script src="/back/src/plugins/datatables/js/buttons.flash.min.js"></script>
+    <script src="/back/src/plugins/datatables/js/pdfmake.min.js"></script>
+    <script src="/back/src/plugins/datatables/js/vfs_fonts.js"></script>
+
+    {{-- <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.colVis.min.js"></script> --}}
+    <!-- Datatable Setting js -->
+    <script src="/back/vendors/scripts/datatable-setting.js"></script>
     @stack('scripts')
 </body>
 
