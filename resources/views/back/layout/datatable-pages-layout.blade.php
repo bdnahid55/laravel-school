@@ -308,6 +308,16 @@
 
                     <li class="dropdown">
                         <a href="javascript:;" class="dropdown-toggle">
+                            <span class="micon bi bi-house"></span><span class="mtext">Announcement</span>
+                        </a>
+                        <ul class="submenu">
+                            <li><a href="{{ route('admin.announcement.create-announcement') }}" class="dropdown-toggle no-arrow  {{ request()->routeIs('admin.announcement.create-announcement') ? 'active' : '' }}">Create Announcement</a></li>
+                            <li><a href="{{ route('admin.announcement.all-announcement') }}" class="dropdown-toggle no-arrow  {{ request()->routeIs('admin.announcement.all-announcement') ? 'active' : '' }}">All Announcement</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="javascript:;" class="dropdown-toggle">
                             <span class="micon bi bi-house"></span><span class="mtext">Page</span>
                         </a>
                         <ul class="submenu">

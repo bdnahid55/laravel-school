@@ -1,5 +1,5 @@
 @extends('back.layout.datatable-pages-layout')
-@section('pageTitle', isset($pageTitle) ? $pageTitle : 'All Page')
+@section('pageTitle', isset($pageTitle) ? $pageTitle : 'All Announcement')
 @section('content')
     <!-- alert -->
     <?php if( Session::get('success') != null){ ?>
@@ -34,7 +34,7 @@
     <!-- Export Datatable start -->
     <div class="card-box mb-30">
         <div class="pd-20">
-            <h4 class="text-blue h4">All page list</h4>
+            <h4 class="text-blue h4">All announcement list</h4>
         </div>
         <div class="pb-20">
             <table class="table hover multiple-select-row data-table-export nowrap">
@@ -42,26 +42,24 @@
                     <tr>
                         <th class="table-plus datatable-nosort">ID</th>
                         <th>Title</th>
-                        <th>Slug</th>
-                        <th>Content</th>
+                        <th>Description</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($pages as $pagedata)
+                    @forelse ($announcements as $announcement)
                         <tr>
-                            <td class="table-plus">{{ $pagedata->id }}</td>
-                            <td>{{ $pagedata->title }}</td>
-                            <td>{{ $pagedata->slug }}</td>
-                            <td>{{ Str::substr($pagedata->content, 0, 20) }}</td>
+                            <td class="table-plus">{{ $announcement->id }}</td>
+                            <td>{{ $announcement->title }}</td>
+                            <td>{{ Str::substr($announcement->description, 0, 30) }}</td>
                             <td>
-                                <a href="{{ route('admin.page.show-page', $pagedata->id) }}"
+                                <a href="{{ route('admin.announcement.show-announcement', $announcement->id) }}"
                                     class="btn btn-square btn-warning waves-effect waves-light"><i class="fa fa-eye"></i></a>
 
-                                <a href="{{ route('admin.page.edit-page', $pagedata->id) }}"
+                                <a href="{{ route('admin.announcement.edit-announcement', $announcement->id) }}"
                                     class="btn btn-square btn-warning waves-effect waves-light"><i
                                         class="fa fa-pencil"></i></a>
-                                <a href="{{ route('admin.page.delete-page', $pagedata->id) }}"
+                                <a href="{{ route('admin.announcement.delete-announcement', $announcement->id) }}"
                                     onclick="return confirm('Are you Sure to Delete it ?')"
                                     class="btn btn-square btn-danger waves-effect waves-light"><i
                                         class="fa fa-close"></i></a>
@@ -69,7 +67,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="100%">No data found</td>
+                            <td colspan="100%" class="text-center">No data found</td>
                         </tr>
                     @endforelse
 

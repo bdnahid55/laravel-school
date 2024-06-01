@@ -119,7 +119,7 @@ class PageController extends Controller
             return redirect()->back()->withInput();
         } else {
             // update data into database
-            $result = Page ::find($id)->update([
+            $result = Page::find($id)->update([
                 'title' => $request->title,
                 'slug' => Str::slug($request->title, '-'),
                 'content' => $request->content,
@@ -147,7 +147,7 @@ class PageController extends Controller
             ->delete();
 
         // $result = Page::where('id', $id)->delete();
-         // $result = Page::find($id)->delete();
+        // $result = Page::find($id)->delete();
 
         if ($result) {
             Session::put('success', 'Page deleted successfully.');
@@ -156,6 +156,6 @@ class PageController extends Controller
             Session::put('failed', 'Page not deleted.');
             return redirect()->back();
         }
+        // End of code
     }
-    // End of code
 }

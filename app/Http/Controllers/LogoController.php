@@ -31,7 +31,7 @@ class LogoController extends Controller
     {
         $check_valid = $request->validate([
             'name' => 'required|min:3',
-            'image' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'image' => 'image|mimes:jpeg,png,gif,jpg|max:2048',
         ]);
 
         // check if token is valid
