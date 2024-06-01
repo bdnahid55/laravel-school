@@ -1,5 +1,5 @@
 @extends('back.layout.editor-pages-layout')
-@section('pageTitle', isset($pageTitle) ? $pageTitle : 'Edit Announcement')
+@section('pageTitle', isset($pageTitle) ? $pageTitle : 'Edit download')
 @section('content')
     {{-- main content --}}
 
@@ -42,19 +42,19 @@
                     <div class="card-header">
                         <div class="row align-items-center">
                             <div class="col-12">
-                                <i class="fas fa-table me-1"></i>Edit announcement
+                                <i class="fas fa-table me-1"></i>Edit download
                             </div>
                         </div>
                     </div>
 
                     <div class="card-body">
-                        <form action="{{ route('admin.announcement.update-announcement',$announcement->id) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('admin.download.update-download',$download->id) }}" method="POST" enctype="multipart/form-data">
 
                             @csrf
 
                             <div class="form-group mb-3">
-                                <label for="">Announcement Title</label>
-                                <input type="text" name="title" class="form-control" value="{{ $announcement->title }}" placeholder="Announcement name" required>
+                                <label for="">Download Title</label>
+                                <input type="text" name="title" class="form-control" value="{{ $download->title }}" placeholder="Download name" required>
                                 @error('title')
                                     <div style="color: red">{{ $message }}</div><br>
                                 @enderror
@@ -62,7 +62,7 @@
 
                             <div class="form-group">
                                 <label>Description</label><br>
-                                <textarea id="summernote" name="description"> {{ $announcement->description }} </textarea>
+                                <textarea id="summernote" name="description"> {{ $download->description }} </textarea>
 
                                 <script>
                                     $('#summernote').summernote({

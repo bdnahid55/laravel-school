@@ -1,5 +1,5 @@
 @extends('back.layout.editor-pages-layout')
-@section('pageTitle', isset($pageTitle) ? $pageTitle : 'Edit Announcement')
+@section('pageTitle', isset($pageTitle) ? $pageTitle : 'Create download')
 @section('content')
     {{-- main content --}}
 
@@ -42,19 +42,18 @@
                     <div class="card-header">
                         <div class="row align-items-center">
                             <div class="col-12">
-                                <i class="fas fa-table me-1"></i>Edit announcement
+                                <i class="fas fa-table me-1"></i>Create new download
                             </div>
                         </div>
                     </div>
 
                     <div class="card-body">
-                        <form action="{{ route('admin.announcement.update-announcement',$announcement->id) }}" method="POST" enctype="multipart/form-data">
-
+                        <form action="{{ route('admin.download.insert-download') }}" method="POST" enctype="multipart/form-data">
                             @csrf
 
                             <div class="form-group mb-3">
-                                <label for="">Announcement Title</label>
-                                <input type="text" name="title" class="form-control" value="{{ $announcement->title }}" placeholder="Announcement name" required>
+                                <label for="">Download Title</label>
+                                <input type="text" name="title" class="form-control" value="{{ old('title') }}" placeholder="Download name" required>
                                 @error('title')
                                     <div style="color: red">{{ $message }}</div><br>
                                 @enderror
@@ -62,11 +61,11 @@
 
                             <div class="form-group">
                                 <label>Description</label><br>
-                                <textarea id="summernote" name="description"> {{ $announcement->description }} </textarea>
+                                <textarea id="summernote" name="description"> {{ old('description') }}</textarea>
 
                                 <script>
                                     $('#summernote').summernote({
-                                      placeholder: 'Write announcement content',
+                                      placeholder: 'Write description',
                                       tabsize: 2,
                                       height: 300,
                                       toolbar: [
@@ -86,7 +85,7 @@
                             </div>
 
                             <div class="form-group mb-3">
-                                <button type="submit" class="btn btn-primary">Update</button>
+                                <button type="submit" class="btn btn-primary">Create</button>
                             </div>
 
                         </form>
@@ -97,3 +96,8 @@
         </div>
 
     @endsection
+
+
+    @push('scripts')
+
+    @endpush

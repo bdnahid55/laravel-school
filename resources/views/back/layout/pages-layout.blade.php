@@ -316,6 +316,16 @@
 
                     <li class="dropdown">
                         <a href="javascript:;" class="dropdown-toggle">
+                            <span class="micon bi bi-house"></span><span class="mtext">Download</span>
+                        </a>
+                        <ul class="submenu">
+                            <li><a href="{{ route('admin.download.create-download') }}" class="dropdown-toggle no-arrow  {{ request()->routeIs('admin.download.create-download') ? 'active' : '' }}">Create Download</a></li>
+                            <li><a href="{{ route('admin.download.all-download') }}" class="dropdown-toggle no-arrow  {{ request()->routeIs('admin.download.all-download') ? 'active' : '' }}">All Download</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="javascript:;" class="dropdown-toggle">
                             <span class="micon bi bi-house"></span><span class="mtext">Page</span>
                         </a>
                         <ul class="submenu">

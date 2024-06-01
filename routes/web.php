@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LogoController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\AnnouncementController;
+use App\Http\Controllers\DownloadController;
 
  Route::view('/', 'front.index')->name('home');
 
@@ -46,6 +47,18 @@ Route::prefix('admin')->name('admin.')->group(function(){
         Route::get('announcement/edit-announcement/{id}','edit')->name('announcement.edit-announcement'); // show edit page
         Route::post('announcement/update-announcement/{id}','update')->name('announcement.update-announcement'); // update process
         Route::get('announcement/delete-announcement/{id}','destroy')->name('announcement.delete-announcement'); // delete process
+    });
+
+    // Route for Download
+    Route::controller(DownloadController::class)->group(function () {
+
+        Route::get('download/all-download','index')->name('download.all-download'); // show all
+        Route::get('download/create-download','create')->name('download.create-download'); // show create page
+        Route::post('download/insert-download','store')->name('download.insert-download'); // create process
+        Route::get('download/preview-download/{id}','show')->name('download.show-download'); // show page preview
+        Route::get('download/edit-download/{id}','edit')->name('download.edit-download'); // show edit page
+        Route::post('download/update-download/{id}','update')->name('download.update-download'); // update process
+        Route::get('download/delete-download/{id}','destroy')->name('download.delete-download'); // delete process
     });
 
 });
