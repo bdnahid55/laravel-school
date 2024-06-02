@@ -350,10 +350,15 @@
                     <li>
                         <div class="sidebar-small-cap">Extra</div>
                     </li>
-                    <li>
-                        <a href="{{ route('admin.edit-logo') }}" class="dropdown-toggle no-arrow  {{ request()->routeIs('admin.edit-logo') ? 'active' : '' }}">
-                            <span class="micon bi bi-layout-text-window-reverse"></span><span class="mtext">Logo</span>
+
+                    <li class="dropdown">
+                        <a href="javascript:;" class="dropdown-toggle">
+                            <span class="micon bi bi-house"></span><span class="mtext">Website Settings</span>
                         </a>
+                        <ul class="submenu">
+                            <li><a href="{{ route('admin.edit-logo') }}" class="dropdown-toggle no-arrow  {{ request()->routeIs('admin.edit-logo') ? 'active' : '' }}">Logo</a></li>
+                            <li><a href="{{ route('admin.footer.edit-footer') }}" class="dropdown-toggle no-arrow  {{ request()->routeIs('admin.footer.edit-footer') ? 'active' : '' }}">Footer</a></li>
+                        </ul>
                     </li>
                 </ul>
             </div>

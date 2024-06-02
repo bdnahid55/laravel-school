@@ -5,6 +5,7 @@ use App\Http\Controllers\LogoController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\DownloadController;
+use App\Http\Controllers\FooterController;
 
  Route::view('/', 'front.index')->name('home');
 
@@ -18,6 +19,12 @@ Route::prefix('admin')->name('admin.')->group(function(){
 
     // Route for admin homepage
     Route::view('/home', 'back.pages.admin.home')->name('home');
+
+    // Route for footer
+    Route::controller(FooterController::class)->group(function () {
+        Route::get('footer/edit-footer', 'edit')->name('footer.edit-footer');
+        Route::post('footer/update-footer', 'update')->name('footer.update-footer');
+    });
 
     // Route for logo
     Route::controller(LogoController::class)->group(function () {
