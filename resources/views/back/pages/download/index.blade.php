@@ -39,10 +39,11 @@
         <div class="pb-20">
             <table class="table hover multiple-select-row data-table-export nowrap">
                 <thead>
-                    <tr>
+                    <tr class="text-center">
                         <th class="table-plus datatable-nosort">ID</th>
                         <th>Title</th>
                         <th>Description</th>
+                        <th>Date</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -52,6 +53,7 @@
                             <td class="table-plus">{{ $download->id }}</td>
                             <td>{{ $download->title }}</td>
                             <td>{{ Str::substr($download->description, 0, 30) }}</td>
+                            <td>{{ date('d-m-Y', strtotime($download->updated_at)) }}</td>
                             <td>
                                 <a href="{{ route('admin.download.show-download', $download->id) }}"
                                     class="btn btn-square btn-warning waves-effect waves-light"><i class="fa fa-eye"></i></a>

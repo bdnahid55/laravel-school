@@ -1,12 +1,11 @@
-@extends('back.layout.editor-pages-layout')
+@extends('back.layout.pages-layout')
 @section('pageTitle', isset($pageTitle) ? $pageTitle : 'Create download')
 @section('content')
     {{-- main content --}}
 
-     <div class="row clearfix">
+    <div class="row clearfix">
         <div class="col-sm-12 mb-30">
             <div class="card-body">
-
                 <!-- alert -->
                 <?php if( Session::get('success') != null){ ?>
 
@@ -60,25 +59,9 @@
                             </div>
 
                             <div class="form-group">
-                                <label>Description</label><br>
-                                <textarea id="summernote" name="description"> {{ old('description') }}</textarea>
+                                <label>Select File</label><br>
+                                <input type="file" class="form-control" name="description"/>
 
-                                <script>
-                                    $('#summernote').summernote({
-                                      placeholder: 'Write description',
-                                      tabsize: 2,
-                                      height: 300,
-                                      toolbar: [
-                                        ['style', ['style']],
-                                        ['font', ['bold', 'underline', 'clear']],
-                                        ['color', ['color']],
-                                        ['para', ['ul', 'ol', 'paragraph']],
-                                        ['table', ['table']],
-                                        ['insert', ['link', 'picture', 'video']],
-                                        ['view', ['fullscreen', 'codeview', 'help']]
-                                      ]
-                                    });
-                                  </script>
                                 @error('description')
                                     <div style="color: red">{{ $message }}</div><br>
                                 @enderror

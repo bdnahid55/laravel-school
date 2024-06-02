@@ -5,8 +5,8 @@
 
     <div class="row clearfix">
         <div class="col-sm-12 mb-30">
-            <!-- alert -->
             <div class="card-body">
+                <!-- alert -->
                 <?php if( Session::get('success') != null){ ?>
 
                 <div class="alert alert-success alert-dismissible" role="alert">

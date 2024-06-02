@@ -1,4 +1,4 @@
-@extends('back.layout.editor-pages-layout')
+@extends('back.layout.pages-layout')
 @section('pageTitle', isset($pageTitle) ? $pageTitle : 'Edit download')
 @section('content')
     {{-- main content --}}
@@ -61,25 +61,11 @@
                             </div>
 
                             <div class="form-group">
-                                <label>Description</label><br>
-                                <textarea id="summernote" name="description"> {{ $download->description }} </textarea>
+                                <label>Select File</label><br>
 
-                                <script>
-                                    $('#summernote').summernote({
-                                      placeholder: 'Write announcement content',
-                                      tabsize: 2,
-                                      height: 300,
-                                      toolbar: [
-                                        ['style', ['style']],
-                                        ['font', ['bold', 'underline', 'clear']],
-                                        ['color', ['color']],
-                                        ['para', ['ul', 'ol', 'paragraph']],
-                                        ['table', ['table']],
-                                        ['insert', ['link', 'picture', 'video']],
-                                        ['view', ['fullscreen', 'codeview', 'help']]
-                                      ]
-                                    });
-                                  </script>
+                                Old File: <a class="btn btn-sm btn-primary" href="{{url('uploads/download',$download->description)}}">Download</a><br><br>
+
+                                <input type="file" class="form-control form-control-file height-auto" name="description"/>
                                 @error('description')
                                     <div style="color: red">{{ $message }}</div><br>
                                 @enderror

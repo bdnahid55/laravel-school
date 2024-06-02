@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 class DownloadController extends Controller
 {
@@ -28,35 +30,42 @@ class DownloadController extends Controller
     public function store(Request $request)
     {
         $check_valid = $request->validate([
-            'title' => 'required|min:3|unique:downloads',
-            'description' => 'required|min:3',
+            'title' => 'required|min:3',
+            'description' => 'required|mimes:pdf,jpeg,png,gif,jpg|max:2048',
         ]);
 
         // check if token is valid
         if (!$check_valid) {
             Session::put('failed', 'Error !!!');
-            return redirect()->back()->withInput();
+            return redirect()->back();
         } else {
 
-            // create data into database
+            if ($request->hasFile('description')) {
+                // upload new file
+                $file = $request->file('description');
+                $filename = Str::random(20) . '.' . $file->getClientOriginalExtension();
+                $destinationPath = public_path('/uploads/download');
+                $file->move($destinationPath, $filename);
+            }
+
+            // insert data into database
             $result = Download::create([
                 'title' => $request->title,
-                'description' => $request->description
+                'description' => $filename,
             ]);
 
-            //echo '<pre>';
-            //var_dump($result);
-            //echo '</pre>';exit();
+            // echo '<pre>';
+            // var_dump($result);
+            // echo '</pre>';exit();
 
             if ($result) {
                 Session::put('success', 'Download created successfully.');
                 return redirect()->back();
             } else {
-                Session::put('failed', 'failed.');
+                Session::put('failed', 'Failed.');
                 return redirect()->back();
             }
         }
-
         // end of code
     }
 
@@ -106,23 +115,43 @@ class DownloadController extends Controller
     {
         $check_valid = $request->validate([
             'title' => 'required|min:3',
-            'description' => 'required|min:3',
+            'description' => 'mimes:pdf,jpeg,png,gif,jpg|max:2048',
         ]);
 
         // check if token is valid
         if (!$check_valid) {
             Session::put('failed', 'Error !!!');
-            return redirect()->back()->withInput();
+            return redirect()->back();
         } else {
+
+            if ($request->hasFile('description')) {
+
+                // delete previous file
+                $findFile = Download::find($id);
+                if ($findFile->description != null) {
+                    unlink(public_path('uploads/download/' . $findFile->description));
+                }
+
+                // upload new file
+                $file = $request->file('description');
+                $filename = Str::random(20) . '.' . $file->getClientOriginalExtension();
+                $destinationPath = public_path('/uploads/download');
+                $file->move($destinationPath, $filename);
+
+                // insert only file in database
+                $result = Download::find($id)->update([
+                    'description' => $filename
+                ]);
+            }
+
             // update data into database
-            $result = Download ::find($id)->update([
+            $result = Download::find($id)->update([
                 'title' => $request->title,
-                'description' => $request->description,
             ]);
 
-            //echo '<pre>';
-            //var_dump($result);
-            //echo '</pre>';exit();
+            // echo '<pre>';
+            // var_dump($result);
+            // echo '</pre>';exit();
 
             if ($result) {
                 Session::put('success', 'Data updated successfully.');
@@ -137,6 +166,12 @@ class DownloadController extends Controller
 
     public function destroy($id)
     {
+        // delete previous file
+        $findFile = Download::find($id);
+        if ($findFile->description != null) {
+            unlink(public_path('uploads/download/' . $findFile->description));
+        }
+
         $result = DB::table('downloads')
             ->where('id', $id)
             ->delete();
@@ -145,10 +180,10 @@ class DownloadController extends Controller
         // $result = Download::find($id)->delete();
 
         if ($result) {
-            Session::put('success', 'Download deleted successfully.');
+            Session::put('success', 'Data deleted successfully.');
             return redirect()->back();
         } else {
-            Session::put('failed', 'Page not deleted.');
+            Session::put('failed', 'Data was not deleted.');
             return redirect()->back();
         }
         // End of code
