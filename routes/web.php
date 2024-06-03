@@ -7,6 +7,7 @@ use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\FooterController;
 use App\Http\Controllers\ImportantLinkController;
+use App\Http\Controllers\SchoolHistoryController;
 
  Route::view('/', 'front.index')->name('home');
 
@@ -31,6 +32,12 @@ Route::prefix('admin')->name('admin.')->group(function(){
     Route::controller(LogoController::class)->group(function () {
         Route::get('/edit-logo', 'edit')->name('edit-logo');
         Route::post('/update-logo', 'update')->name('update-logo');
+    });
+
+    // Route for school history
+    Route::controller(SchoolHistoryController::class)->group(function () {
+        Route::get('schoolhistory/edit-schoolhistory', 'edit')->name('schoolhistory.edit-schoolhistory');
+        Route::post('schoolhistory/update-schoolhistory', 'update')->name('schoolhistory.update-schoolhistory');
     });
 
     // Route for page

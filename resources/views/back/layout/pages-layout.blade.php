@@ -345,6 +345,12 @@
                     </li>
 
                     <li>
+                        <a href="{{ route('admin.schoolhistory.edit-schoolhistory') }}" class="dropdown-toggle no-arrow  {{ request()->routeIs('admin.schoolhistory.edit-schoolhistory') ? 'active' : '' }}">
+                            <span class="micon bi bi-receipt-cutoff"></span><span class="mtext">School History</span>
+                        </a>
+                    </li>
+
+                    <li>
                         <a href="#" class="dropdown-toggle no-arrow">
                             <span class="micon bi bi-receipt-cutoff"></span><span class="mtext">Invoice</span>
                         </a>
