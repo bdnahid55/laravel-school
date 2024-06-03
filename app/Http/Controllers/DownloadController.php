@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
-use Carbon\Carbon;
 
 class DownloadController extends Controller
 {
@@ -31,7 +30,7 @@ class DownloadController extends Controller
     {
         $check_valid = $request->validate([
             'title' => 'required|min:3',
-            'description' => 'required|mimes:pdf,jpeg,png,gif,jpg|max:2048',
+            'description' => 'required|file|mimes:pdf,jpeg,png,gif,jpg|max:2048',
         ]);
 
         // check if token is valid
@@ -115,7 +114,7 @@ class DownloadController extends Controller
     {
         $check_valid = $request->validate([
             'title' => 'required|min:3',
-            'description' => 'mimes:pdf,jpeg,png,gif,jpg|max:2048',
+            'description' => 'file|mimes:pdf,jpeg,png,gif,jpg|max:2048',
         ]);
 
         // check if token is valid

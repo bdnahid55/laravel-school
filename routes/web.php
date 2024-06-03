@@ -6,6 +6,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\FooterController;
+use App\Http\Controllers\ImportantLinkController;
 
  Route::view('/', 'front.index')->name('home');
 
@@ -54,6 +55,18 @@ Route::prefix('admin')->name('admin.')->group(function(){
         Route::get('announcement/edit-announcement/{id}','edit')->name('announcement.edit-announcement'); // show edit page
         Route::post('announcement/update-announcement/{id}','update')->name('announcement.update-announcement'); // update process
         Route::get('announcement/delete-announcement/{id}','destroy')->name('announcement.delete-announcement'); // delete process
+    });
+
+    // Route for importantlink
+    Route::controller(ImportantLinkController::class)->group(function () {
+
+        Route::get('importantlink/all-importantlink','index')->name('importantlink.all-importantlink'); // show all
+        Route::get('importantlink/create-importantlink','create')->name('importantlink.create-importantlink'); // show create page
+        Route::post('importantlink/insert-importantlink','store')->name('importantlink.insert-importantlink'); // create process
+        Route::get('importantlink/preview-importantlink/{id}','show')->name('importantlink.show-importantlink'); // show page preview
+        Route::get('importantlink/edit-importantlink/{id}','edit')->name('importantlink.edit-importantlink'); // show edit page
+        Route::post('importantlink/update-importantlink/{id}','update')->name('importantlink.update-importantlink'); // update process
+        Route::get('importantlink/delete-importantlink/{id}','destroy')->name('importantlink.delete-importantlink'); // delete process
     });
 
     // Route for Download

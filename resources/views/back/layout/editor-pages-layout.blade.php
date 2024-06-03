@@ -321,6 +321,16 @@
 
                     <li class="dropdown">
                         <a href="javascript:;" class="dropdown-toggle">
+                            <span class="micon bi bi-house"></span><span class="mtext">Important Link</span>
+                        </a>
+                        <ul class="submenu">
+                            <li><a href="{{ route('admin.importantlink.create-importantlink') }}" class="dropdown-toggle no-arrow  {{ request()->routeIs('admin.importantlink.create-importantlink') ? 'active' : '' }}">Create important link</a></li>
+                            <li><a href="{{ route('admin.importantlink.all-importantlink') }}" class="dropdown-toggle no-arrow  {{ request()->routeIs('admin.importantlink.all-importantlink') ? 'active' : '' }}">All important link</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="javascript:;" class="dropdown-toggle">
                             <span class="micon bi bi-house"></span><span class="mtext">Download</span>
                         </a>
                         <ul class="submenu">
