@@ -53,7 +53,7 @@
                             @csrf
 
                             <div class="form-group mb-3">
-                                <label for="">Page Titile</label>
+                                <label for="">Page Title</label>
                                 <input type="text" name="title" class="form-control" value="{{ $page->title }}" placeholder="Page name" required>
                                 @error('title')
                                     <div style="color: red">{{ $message }}</div><br>

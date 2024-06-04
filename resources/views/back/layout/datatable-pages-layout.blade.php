@@ -346,6 +346,17 @@
                         </ul>
                     </li>
 
+
+                    <li class="dropdown">
+                        <a href="javascript:;" class="dropdown-toggle">
+                            <span class="micon bi bi-house"></span><span class="mtext">Notice</span>
+                        </a>
+                        <ul class="submenu">
+                            <li><a href="{{ route('admin.notice.create-notice') }}" class="dropdown-toggle no-arrow  {{ request()->routeIs('admin.notice.create-notice') ? 'active' : '' }}">Create Notice</a></li>
+                            <li><a href="{{ route('admin.notice.all-notice') }}" class="dropdown-toggle no-arrow  {{ request()->routeIs('admin.notice.all-notice') ? 'active' : '' }}">All Notice</a></li>
+                        </ul>
+                    </li>
+
                     <li>
                         <a href="{{ route('admin.schoolhistory.edit-schoolhistory') }}" class="dropdown-toggle no-arrow  {{ request()->routeIs('admin.schoolhistory.edit-schoolhistory') ? 'active' : '' }}">
                             <span class="micon bi bi-receipt-cutoff"></span><span class="mtext">School History</span>

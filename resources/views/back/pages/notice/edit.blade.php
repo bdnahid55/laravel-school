@@ -1,5 +1,5 @@
 @extends('back.layout.editor-pages-layout')
-@section('pageTitle', isset($pageTitle) ? $pageTitle : 'Create Page')
+@section('pageTitle', isset($pageTitle) ? $pageTitle : 'Edit Notice')
 @section('content')
     {{-- main content --}}
 
@@ -42,18 +42,18 @@
                     <div class="card-header">
                         <div class="row align-items-center">
                             <div class="col-12">
-                                <i class="fas fa-table me-1"></i>Create new page
+                                <i class="fas fa-table me-1"></i>Edit Notice
                             </div>
                         </div>
                     </div>
 
                     <div class="card-body">
-                        <form action="{{ route('admin.page.insert-page') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('admin.notice.update-notice',$notice->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
 
                             <div class="form-group mb-3">
-                                <label for="">Page Title</label>
-                                <input type="text" name="title" class="form-control" value="{{ old('title') }}" placeholder="Page name" required>
+                                <label for="">Notice Title</label>
+                                <input type="text" name="title" class="form-control" value="{{ $notice->title }}" placeholder="notice title" required>
                                 @error('title')
                                     <div style="color: red">{{ $message }}</div><br>
                                 @enderror
@@ -61,11 +61,11 @@
 
                             <div class="form-group">
                                 <label>Description</label><br>
-                                <textarea id="summernote" name="content"> {{ old('content') }}</textarea>
+                                <textarea id="summernote" name="content"> {{ $notice->content }} </textarea>
 
                                 <script>
                                     $('#summernote').summernote({
-                                      placeholder: 'Write page content',
+                                      placeholder: 'Write Notice description',
                                       tabsize: 2,
                                       height: 300,
                                       toolbar: [
@@ -85,7 +85,7 @@
                             </div>
 
                             <div class="form-group mb-3">
-                                <button type="submit" class="btn btn-primary">Create</button>
+                                <button type="submit" class="btn btn-primary">Update</button>
                             </div>
 
                         </form>
@@ -96,10 +96,3 @@
         </div>
 
     @endsection
-
-
-    @push('scripts')
-        {{-- <script>
-            //
-        </script> --}}
-    @endpush

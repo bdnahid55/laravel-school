@@ -11,7 +11,7 @@ class Notice extends Model
 
     protected $fillable = [
         'title',
-        'description'
+        'content'
     ];
 
 

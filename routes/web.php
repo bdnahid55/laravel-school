@@ -11,6 +11,7 @@ use App\Http\Controllers\SchoolHistoryController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\SpeechOneController;
 use App\Http\Controllers\SpeechTwoController;
+use App\Http\Controllers\NoticeController;
 
  Route::view('/', 'front.index')->name('home');
 
@@ -65,6 +66,18 @@ Route::prefix('admin')->name('admin.')->group(function(){
         Route::get('page/edit-page/{id}','edit')->name('page.edit-page'); // show edit page
         Route::post('page/update-page/{id}','update')->name('page.update-page'); // update process
         Route::get('page/delete-page/{id}','destroy')->name('page.delete-page'); // delete process
+    });
+
+    // Route for Notice
+    Route::controller(NoticeController::class)->group(function () {
+
+        Route::get('notice/all-notice','index')->name('notice.all-notice'); // show all
+        Route::get('notice/create-notice','create')->name('notice.create-notice'); // show create page
+        Route::post('notice/insert-notice','store')->name('notice.insert-notice'); // create process
+        Route::get('notice/preview-notice/{id}','show')->name('notice.show-notice'); // show page preview
+        Route::get('notice/edit-notice/{id}','edit')->name('notice.edit-notice'); // show edit page
+        Route::post('notice/update-notice/{id}','update')->name('notice.update-notice'); // update process
+        Route::get('notice/delete-notice/{id}','destroy')->name('notice.delete-notice'); // delete process
     });
 
     // Route for Announcement
