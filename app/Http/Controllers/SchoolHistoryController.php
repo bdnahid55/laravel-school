@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
 use DB;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
 
@@ -17,11 +16,11 @@ class SchoolHistoryController extends Controller
     public function edit(SchoolHistory $schoolHistory)
     {
         $SchoolHistory = SchoolHistory::first();
-        //return view('back.pages.schoolhistory.index', compact('SchoolHistory'));
+        return view('back.pages.schoolhistory.index', compact('SchoolHistory'));
 
-        echo '<pre>';
-        print_r($SchoolHistory);
-        exit();
+        // echo '<pre>';
+        // print_r($SchoolHistory);
+        // exit();
     }
 
     // update school history

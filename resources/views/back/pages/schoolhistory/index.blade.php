@@ -50,7 +50,7 @@
 
                             <div class="form-group mb-3">
                                 <label for="">Title</label>
-                                <input type="text" name="title" value="{{ $Logo->title }}" class="form-control"
+                                <input type="text" name="title" value="{{ $SchoolHistory->title }}" class="form-control"
                                     required>
                                 @error('title')
                                     <div style="color: red">{{ $message }}</div><br>
@@ -59,8 +59,7 @@
 
                             <div class="form-group mb-3">
                                 <label for="">Description</label>
-                                <input type="text" name="title" value="{{ $Logo->title }}" class="form-control"
-                                    required>
+                                <textarea name="description" class="form-control" required>{{ $SchoolHistory->description }}</textarea>
                                 @error('description')
                                     <div style="color: red">{{ $message }}</div><br>
                                 @enderror
@@ -68,7 +67,12 @@
 
                             <div class="form-group">
                                 <label><u>Select new Image</u></label><br>
-                                Old Image: <img src="{{url('uploads/logo',$Logo->image)}}"> <br><br>
+
+                                @if ($SchoolHistory->image == null)
+                                    <p></p>
+                                @else
+                                    <p>Old Image: <img src="{{url('uploads/schoolhistory',$SchoolHistory->image)}}"> <br><br></p>
+                                @endif
 
                                 <input type="file" name="image" class="form-control-file form-control height-auto">
                                 @error('image')
