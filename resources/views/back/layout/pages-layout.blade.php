@@ -351,6 +351,18 @@
                     </li>
 
                     <li>
+                        <a href="{{ route('admin.speechone.edit-speechone') }}" class="dropdown-toggle no-arrow  {{ request()->routeIs('admin.speechone.edit-speechone') ? 'active' : '' }}">
+                            <span class="micon bi bi-receipt-cutoff"></span><span class="mtext">Speech One</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('admin.speechtwo.edit-speechtwo') }}" class="dropdown-toggle no-arrow  {{ request()->routeIs('admin.speechtwo.edit-speechtwo') ? 'active' : '' }}">
+                            <span class="micon bi bi-receipt-cutoff"></span><span class="mtext">Speech Two</span>
+                        </a>
+                    </li>
+
+                    <li>
                         <a href="#" class="dropdown-toggle no-arrow">
                             <span class="micon bi bi-receipt-cutoff"></span><span class="mtext">Invoice</span>
                         </a>

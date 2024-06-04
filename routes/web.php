@@ -8,6 +8,8 @@ use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\FooterController;
 use App\Http\Controllers\ImportantLinkController;
 use App\Http\Controllers\SchoolHistoryController;
+use App\Http\Controllers\SpeechOneController;
+use App\Http\Controllers\SpeechTwoController;
 
  Route::view('/', 'front.index')->name('home');
 
@@ -38,6 +40,18 @@ Route::prefix('admin')->name('admin.')->group(function(){
     Route::controller(SchoolHistoryController::class)->group(function () {
         Route::get('schoolhistory/edit-schoolhistory', 'edit')->name('schoolhistory.edit-schoolhistory');
         Route::post('schoolhistory/update-schoolhistory', 'update')->name('schoolhistory.update-schoolhistory');
+    });
+
+    // Route for Speech One
+    Route::controller(SpeechOneController::class)->group(function () {
+        Route::get('speechone/edit-speechone', 'edit')->name('speechone.edit-speechone');
+        Route::post('speechone/update-speechone', 'update')->name('speechone.update-speechone');
+    });
+
+    // Route for Speech Two
+    Route::controller(SpeechTwoController::class)->group(function () {
+        Route::get('speechtwo/edit-speechtwo', 'edit')->name('speechtwo.edit-speechtwo');
+        Route::post('speechtwo/update-speechtwo', 'update')->name('speechtwo.update-speechtwo');
     });
 
     // Route for page
