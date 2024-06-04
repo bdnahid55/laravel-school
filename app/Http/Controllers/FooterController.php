@@ -9,10 +9,9 @@ use Illuminate\Support\Facades\Session;
 use DB;
 use Illuminate\Support\Facades\Redirect;
 
-
 class FooterController extends Controller
 {
-    // logo edit page
+    // Footer edit page
     public function edit(Footer $footer)
     {
         $Footer = DB::table('footers')->first();
@@ -25,7 +24,7 @@ class FooterController extends Controller
         // exit();
     }
 
-    // update logo
+    // update Footer
     public function update(Request $request)
     {
         $check_valid = $request->validate([

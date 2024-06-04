@@ -8,6 +8,7 @@ use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\FooterController;
 use App\Http\Controllers\ImportantLinkController;
 use App\Http\Controllers\SchoolHistoryController;
+use App\Http\Controllers\SliderController;
 use App\Http\Controllers\SpeechOneController;
 use App\Http\Controllers\SpeechTwoController;
 
@@ -102,6 +103,17 @@ Route::prefix('admin')->name('admin.')->group(function(){
         Route::get('download/delete-download/{id}','destroy')->name('download.delete-download'); // delete process
     });
 
-});
+    // Route for Download
+    Route::controller(SliderController::class)->group(function () {
 
+        Route::get('slider/all-slider','index')->name('slider.all-slider'); // show all
+        Route::get('slider/create-slider','create')->name('slider.create-slider'); // show create page
+        Route::post('slider/insert-slider','store')->name('slider.insert-slider'); // create process
+        Route::get('slider/preview-slider/{id}','show')->name('slider.show-slider'); // show page preview
+        Route::get('slider/edit-slider/{id}','edit')->name('slider.edit-slider'); // show edit page
+        Route::post('slider/update-slider/{id}','update')->name('slider.update-slider'); // update process
+        Route::get('slider/delete-slider/{id}','destroy')->name('slider.delete-slider'); // delete process
+    });
+
+});
 

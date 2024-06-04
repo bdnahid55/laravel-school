@@ -306,6 +306,16 @@
 
                     <li class="dropdown">
                         <a href="javascript:;" class="dropdown-toggle">
+                            <span class="micon bi bi-house"></span><span class="mtext">Slider</span>
+                        </a>
+                        <ul class="submenu">
+                            <li><a href="{{ route('admin.slider.create-slider') }}" class="dropdown-toggle no-arrow  {{ request()->routeIs('admin.slider.create-slider') ? 'active' : '' }}">Create slider</a></li>
+                            <li><a href="{{ route('admin.slider.all-slider') }}" class="dropdown-toggle no-arrow  {{ request()->routeIs('admin.slider.all-slider') ? 'active' : '' }}">All slider</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="javascript:;" class="dropdown-toggle">
                             <span class="micon bi bi-house"></span><span class="mtext">Announcement</span>
                         </a>
                         <ul class="submenu">

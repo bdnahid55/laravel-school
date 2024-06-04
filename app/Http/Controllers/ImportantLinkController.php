@@ -115,7 +115,7 @@ class ImportantLinkController extends Controller
             return redirect()->back()->withInput();
         } else {
             // update data into database
-            $result = ImportantLink ::find($id)->update([
+            $result = ImportantLink::find($id)->update([
                 'title' => $request->title,
                 'url' => $request->url
             ]);

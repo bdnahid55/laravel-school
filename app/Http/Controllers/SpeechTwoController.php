@@ -78,5 +78,4 @@ class SpeechTwoController extends Controller
 
         // end of code
     }
-
 }

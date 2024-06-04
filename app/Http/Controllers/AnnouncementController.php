@@ -116,7 +116,7 @@ class AnnouncementController extends Controller
             return redirect()->back()->withInput();
         } else {
             // update data into database
-            $result = Announcement ::find($id)->update([
+            $result = Announcement::find($id)->update([
                 'title' => $request->title,
                 'description' => $request->description,
             ]);

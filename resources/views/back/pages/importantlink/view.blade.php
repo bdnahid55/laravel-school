@@ -1,4 +1,4 @@
-@extends('back.layout.editor-pages-layout')
+@extends('back.layout.pages-layout')
 @section('pageTitle', isset($pageTitle) ? $pageTitle : 'Preview important link')
 @section('content')
     {{-- main content --}}

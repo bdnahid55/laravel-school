@@ -79,5 +79,3 @@ class SchoolHistoryController extends Controller
         // end of code
     }
 }
-
-

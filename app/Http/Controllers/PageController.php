@@ -13,10 +13,9 @@ use Illuminate\Support\Str;
 
 class PageController extends Controller
 {
-
     public function index()
     {
-        // show all posts
+        // show all page
         $pages = Page::all();
         return view('back.pages.page.index', compact('pages'));
         // End of code

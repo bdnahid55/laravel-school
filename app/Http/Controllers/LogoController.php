@@ -13,7 +13,6 @@ use Illuminate\Support\Str;
 
 class LogoController extends Controller
 {
-
     // logo edit page
     public function edit(Logo $logo)
     {
