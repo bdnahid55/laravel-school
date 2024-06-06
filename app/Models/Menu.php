@@ -9,16 +9,22 @@ class Menu extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
+    protected $table = 'menus';
+
     protected $fillable = [
         'name',
-        'slug',
-        'icon',
-        'url',
-        'target',
-        'parent',
+        'parent_id',
         'order',
-        'status'
+        'url',
+        //'target'
 
     ];
+
+    public function children()
+    {
+        return $this->hasMany(Menu::class, 'parent_id');
+    }
 
 }

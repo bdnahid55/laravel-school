@@ -391,6 +391,16 @@
 
                     <li class="dropdown">
                         <a href="javascript:;" class="dropdown-toggle">
+                            <span class="micon bi bi-house"></span><span class="mtext">Website Menu</span>
+                        </a>
+                        <ul class="submenu">
+                            <li><a href="{{ route('admin.menu.create-menu') }}" class="dropdown-toggle no-arrow  {{ request()->routeIs('admin.menu.create-menu') ? 'active' : '' }}">Add menu</a></li>
+                            <li><a href="{{ route('admin.menu.all-menu') }}" class="dropdown-toggle no-arrow  {{ request()->routeIs('admin.menu.all-menu') ? 'active' : '' }}">Manage Menu</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="javascript:;" class="dropdown-toggle">
                             <span class="micon bi bi-house"></span><span class="mtext">Website Settings</span>
                         </a>
                         <ul class="submenu">
