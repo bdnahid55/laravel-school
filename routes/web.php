@@ -13,14 +13,29 @@ use App\Http\Controllers\SpeechOneController;
 use App\Http\Controllers\SpeechTwoController;
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\HomePageController;
 
-Route::view('/', 'front.index')->name('home');
+//Route::view('/', 'front.index')->name('home');
 
 Route::view('/example-page', 'example-page');
 Route::view('/example-datatable', 'example-datatable-page');
 Route::view('/example-auth', 'example-auth');
+// ----------------------------------------------------------------------------------------
 
 
+
+// Route for menu
+Route::controller(HomePageController::class)->group(function () {
+    Route::get('/', 'index')->name('homepage');
+    Route::get('/announcement/{id}/view', 'announcementshow')->name('announcement');
+    Route::get('/notice/{id}/view', 'noticeshow')->name('notice');
+    Route::get('/download/{id}/view', 'downloadshow')->name('download');
+    Route::get('/page/{id}/view', 'pageshow')->name('page');
+});
+
+
+
+// ----------------------------------------------------------------------------------------
 
 Route::prefix('admin')->name('admin.')->group(function () {
 

@@ -3,7 +3,7 @@
 @section('content')
     {{-- main content --}}
 
-     <div class="row clearfix">
+    <div class="row clearfix">
         <div class="col-sm-12 mb-30">
             <div class="card-body">
 
@@ -48,14 +48,37 @@
                     </div>
 
                     <div class="card-body">
-                        <form action="{{ route('admin.page.update-page',$page->id) }}" method="POST" enctype="multipart/form-data">
-
+                        <form action="{{ route('admin.page.update-page', $page->id) }}" method="POST"
+                            enctype="multipart/form-data">
                             @csrf
 
                             <div class="form-group mb-3">
                                 <label for="">Page Title</label>
-                                <input type="text" name="title" class="form-control" value="{{ $page->title }}" placeholder="Page name" required>
+                                <input type="text" name="title" class="form-control" value="{{ $page->title }}"
+                                    placeholder="Page name" required>
                                 @error('title')
+                                    <div style="color: red">{{ $message }}</div><br>
+                                @enderror
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label for="">Show At</label>
+                                <select class="form-control" name="display_section">
+                                    <option value="{{ $page->display_section }}" selected>
+                                        @if ($page->display_section === 1)
+                                            Section One
+                                        @elseif ($page->display_section === 2)
+                                            Section Two
+                                        @else
+                                            Section Three
+                                        @endif
+                                    </option>
+                                    <option value="1">Section One</option>
+                                    <option value="2">Section Two</option>
+                                    <option value="3">Section Three</option>
+                                </select>
+
+                                @error('display_section')
                                     <div style="color: red">{{ $message }}</div><br>
                                 @enderror
                             </div>
@@ -66,20 +89,20 @@
 
                                 <script>
                                     $('#summernote').summernote({
-                                      placeholder: 'Write page content',
-                                      tabsize: 2,
-                                      height: 300,
-                                      toolbar: [
-                                        ['style', ['style']],
-                                        ['font', ['bold', 'underline', 'clear']],
-                                        ['color', ['color']],
-                                        ['para', ['ul', 'ol', 'paragraph']],
-                                        ['table', ['table']],
-                                        ['insert', ['link', 'picture', 'video']],
-                                        ['view', ['fullscreen', 'codeview', 'help']]
-                                      ]
+                                        placeholder: 'Write page content',
+                                        tabsize: 2,
+                                        height: 300,
+                                        toolbar: [
+                                            ['style', ['style']],
+                                            ['font', ['bold', 'underline', 'clear']],
+                                            ['color', ['color']],
+                                            ['para', ['ul', 'ol', 'paragraph']],
+                                            ['table', ['table']],
+                                            ['insert', ['link', 'picture', 'video']],
+                                            ['view', ['fullscreen', 'codeview', 'help']]
+                                        ]
                                     });
-                                  </script>
+                                </script>
                                 @error('content')
                                     <div style="color: red">{{ $message }}</div><br>
                                 @enderror

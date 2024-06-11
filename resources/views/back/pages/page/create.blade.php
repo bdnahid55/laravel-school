@@ -59,6 +59,20 @@
                                 @enderror
                             </div>
 
+                            <div class="form-group mb-3">
+                                <label for="">Show At</label>
+                                <select class="form-control" name="display_section">
+                                    <option value="" selected></option>
+                                        <option value="1">Section One</option>
+                                        <option value="2">Section Two</option>
+                                        <option value="3">Section Three</option>
+                                </select>
+
+                                @error('display_section')
+                                    <div style="color: red">{{ $message }}</div><br>
+                                @enderror
+                            </div>
+
                             <div class="form-group">
                                 <label>Description</label><br>
                                 <textarea id="summernote" name="content"> {{ old('content') }}</textarea>

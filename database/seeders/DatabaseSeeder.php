@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('footers')->insert([
-            'title' => '&copy; Copyright 2024',
+            'title' => 'Copyright 2024',
         ]);
 
         DB::table('school_histories')->insert([

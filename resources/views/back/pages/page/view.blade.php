@@ -11,6 +11,7 @@
 
                     <div class="card-body">
                         <h2>Page Name: {{ $preview_page->title }}</h2>
+                        <i>Page display on section: {{ $preview_page->display_section }}</i>
                         <p>Slug: <b>{{ $preview_page->slug }}</b></p>
                         <p>{!! $preview_page->content !!}</p>
                     </div>

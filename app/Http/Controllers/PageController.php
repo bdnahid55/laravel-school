@@ -30,6 +30,7 @@ class PageController extends Controller
     {
         $check_valid = $request->validate([
             'title' => 'required|min:3|unique:pages',
+            'display_section' => 'required|integer|between:1,3',
             'content' => 'required|min:3',
         ]);
 
@@ -42,6 +43,7 @@ class PageController extends Controller
             // create data into database
             $result = Page::create([
                 'title' => $request->title,
+                'display_section' => $request->display_section,
                 'slug' => Str::slug($request->title, '-'),
                 'content' => $request->content
             ]);
@@ -108,6 +110,7 @@ class PageController extends Controller
     {
         $check_valid = $request->validate([
             'title' => 'required|min:3',
+            'display_section' => 'required|integer|between:1,3',
             'content' => 'required|min:3',
         ]);
 
@@ -119,6 +122,7 @@ class PageController extends Controller
             // update data into database
             $result = Page::find($id)->update([
                 'title' => $request->title,
+                'display_section' => $request->display_section,
                 'slug' => Str::slug($request->title, '-'),
                 'content' => $request->content,
             ]);

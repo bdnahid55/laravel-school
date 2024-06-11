@@ -42,6 +42,7 @@
                     <tr>
                         <th class="table-plus datatable-nosort">ID</th>
                         <th>Title</th>
+                        <th>Display At</th>
                         <th>Slug</th>
                         <th>Content</th>
                         <th>Action</th>
@@ -52,6 +53,7 @@
                         <tr>
                             <td class="table-plus">{{ $pagedata->id }}</td>
                             <td>{{ $pagedata->title }}</td>
+                            <td>{{ $pagedata->display_section }}</td>
                             <td>{{ $pagedata->slug }}</td>
                             <td>{{ Str::substr($pagedata->content, 0, 20) }}</td>
                             <td>
