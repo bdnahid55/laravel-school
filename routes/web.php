@@ -14,17 +14,28 @@ use App\Http\Controllers\SpeechTwoController;
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\HomePageController;
+use App\Http\Controllers\AuthController;
 
-//Route::view('/', 'front.index')->name('home');
 
+// ---------------------------- sample template view --------------------------------------
 Route::view('/example-page', 'example-page');
 Route::view('/example-datatable', 'example-datatable-page');
 Route::view('/example-auth', 'example-auth');
 // ----------------------------------------------------------------------------------------
 
+// Route for Login
+Route::controller(AuthController::class)->group(function () {
+    Route::get('adminuser/login', 'index')->name('admin.login');
+    Route::post('adminuser/login-process', 'LoginProcess')->name('adminuser.login-process');
+    // Route for admin homepage / Dashboard
+    Route::get('admin/home', 'dashboard')->name('admin.home')->middleware('admin');
+    Route::get('admin/logout', 'logout')->name('logout');
+});
 
 
-// Route for menu
+// ----------------------------------------------------------------------------------------
+
+// Route for Homepage
 Route::controller(HomePageController::class)->group(function () {
     Route::get('/', 'index')->name('homepage');
     Route::get('/announcement/{id}/view', 'announcementshow')->name('announcement');
@@ -33,14 +44,9 @@ Route::controller(HomePageController::class)->group(function () {
     Route::get('/page/{id}/view', 'pageshow')->name('page');
 });
 
-
-
 // ----------------------------------------------------------------------------------------
 
-Route::prefix('admin')->name('admin.')->group(function () {
-
-    // Route for admin homepage
-    Route::view('/home', 'back.pages.admin.home')->name('home');
+Route::prefix('admin')->name('admin.')->middleware('admin')->group(function () {
 
     // Route for menu
     Route::controller(MenuController::class)->group(function () {
@@ -153,7 +159,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('slider/update-slider/{id}', 'update')->name('slider.update-slider'); // update process
         Route::get('slider/delete-slider/{id}', 'destroy')->name('slider.delete-slider'); // delete process
     });
-
 
     // End
 });

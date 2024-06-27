@@ -5,7 +5,7 @@
         <div class="login-title">
             <h2 class="text-center text-primary">Login To Application</h2>
         </div>
-        <form action="{{ route('admin.login_handeler') }}" method="POST">
+        <form action="{{ route('adminuser.login-process') }}" method="POST">
             @csrf
 
             @if (Session::get('fail'))
@@ -54,7 +54,7 @@
                 </div>
                 <div class="col-6">
                     <div class="forgot-password">
-                        <a href="{{ route('admin.forgot-password') }}">Forgot Password</a>
+                        {{-- <a href="{{ route('admin.forgot-password') }}">Forgot Password</a> --}}
                     </div>
                 </div>
             </div>

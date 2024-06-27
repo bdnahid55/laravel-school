@@ -172,14 +172,12 @@
                             <img src="/back/vendors/images/photo1.jpg" alt="profile picture" />
                         </span>
                         <span class="user-name">
-                            Admin
-                            {{-- {{ Auth::user()->name }} --}}
+                            {{ Auth::user()->name }}
                         </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
                         <a class="dropdown-item" href=""><i class="dw dw-user1"></i> Profile</a>
-                        <a class="dropdown-item" href="" onclick="event.preventDefault();document.getElementById('adminLogoutForm').submit();"><i class="dw dw-logout"></i> Log Out</a>
-                        <form id="adminLogoutForm" action="" method="POST">@csrf </form>
+                        <a class="dropdown-item" href="{{ route('logout') }}"><i class="dw dw-logout"></i> Log Out</a>
                     </div>
                 </div>
             </div>
