@@ -15,6 +15,7 @@ use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BackupController;
 
 
 // ---------------------------- sample template view --------------------------------------
@@ -56,6 +57,13 @@ Route::prefix('admin')->name('admin.')->middleware('admin')->group(function () {
         Route::get('/menu/edit-menu/{id}', 'edit')->name('menu.edit-menu');
         Route::post('/menu/update-menu/{id}', 'update')->name('menu.update-menu');
         Route::get('/menu/delete-menu/{id}', 'destroy')->name('menu.delete-menu');
+    });
+
+    // Route for Backup
+    Route::controller(BackupController::class)->group(function () {
+        Route::get('backup/create-new-backup', 'create')->name('backup.create-new-backup');
+        Route::get('backup/delete-backup', 'destroy')->name('backup.delete-backup');
+
     });
 
     // Route for footer
