@@ -385,13 +385,6 @@
                         </a>
                     </li>
 
-                    <li>
-                        <a href="#" class="dropdown-toggle no-arrow">
-                            <span class="micon bi bi-receipt-cutoff"></span><span class="mtext">Invoice</span>
-                        </a>
-                    </li>
-
-
                     {{-- Settings option menu  --}}
                     <li>
                         <div class="sidebar-small-cap">Extra</div>

@@ -62,8 +62,8 @@ Route::prefix('admin')->name('admin.')->middleware('admin')->group(function () {
     // Route for Backup
     Route::controller(BackupController::class)->group(function () {
         Route::get('backup/create-new-backup', 'create')->name('backup.create-new-backup');
+        Route::get('backup/all-backup', 'index')->name('backup.all-backup');
         Route::get('backup/delete-backup', 'destroy')->name('backup.delete-backup');
-
     });
 
     // Route for footer

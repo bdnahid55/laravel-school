@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 
 class BackupController extends Controller
@@ -20,7 +19,15 @@ class BackupController extends Controller
         } else {
             Session::put('failed', 'Backup failed.');
         }
-        return redirect()->route('admin.home');
+        return redirect()->route('admin.backup.all-backup');
+    }
+
+    public function index()
+    {
+        $path = public_path('backups/laravel');
+        $backups = File::allFiles($path);
+        // print_r($backups);
+        return view('back.pages.backup.index', compact('backups'));
     }
 
     public function destroy()
@@ -30,6 +37,6 @@ class BackupController extends Controller
         } else {
             Session::put('failed', 'Backup delete failed.');
         }
-        return redirect()->route('admin.home');
+        return redirect()->route('admin.backup.all-backup');
     }
 }
