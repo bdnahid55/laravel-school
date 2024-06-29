@@ -284,7 +284,7 @@
 
     <div class="left-side-bar">
         <div class="brand-logo">
-            <a href="index.html">
+            <a href="{{ route('admin.home') }}">
                 <img src="/back/vendors/images/deskapp-logo.svg" alt="" class="dark-logo" />
                 <img src="/back/vendors/images/deskapp-logo-white.svg" alt="" class="light-logo" />
             </a>
@@ -409,6 +409,16 @@
                         <ul class="submenu">
                             <li><a href="{{ route('admin.edit-logo') }}" class="dropdown-toggle no-arrow  {{ request()->routeIs('admin.edit-logo') ? 'active' : '' }}">Logo</a></li>
                             <li><a href="{{ route('admin.footer.edit-footer') }}" class="dropdown-toggle no-arrow  {{ request()->routeIs('admin.footer.edit-footer') ? 'active' : '' }}">Footer</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="javascript:;" class="dropdown-toggle">
+                            <span class="micon bi bi-house"></span><span class="mtext">Backup</span>
+                        </a>
+                        <ul class="submenu">
+                            <li><a href="{{ route('admin.backup.create-new-backup') }}" class="dropdown-toggle no-arrow  {{ request()->routeIs('admin.backup.create-new-backup') ? 'active' : '' }}"> Create  Backup</a></li>
+                            <li><a href="{{ route('admin.backup.delete-backup') }}" class="dropdown-toggle no-arrow  {{ request()->routeIs('admin.backup.delete-backup') ? 'active' : '' }}">Delete old  backup</a></li>
                         </ul>
                     </li>
 

@@ -14,25 +14,22 @@ class BackupController extends Controller
 
     public function create()
     {
-        $data = Artisan::call('backup:run');
-        if ($data) {
+        // if (Artisan::call('backup:run') == 0) {
+        if (Artisan::call('backup:run --only-files') == 0) {
             Session::put('success', 'Backup created successfully');
-            return redirect()->route('admin.home');
         } else {
             Session::put('failed', 'Backup failed.');
-            return redirect()->route('admin.home');
         }
+        return redirect()->route('admin.home');
     }
 
     public function destroy()
     {
-        $data = Artisan::call('backup:clean');
-        if ($data) {
+        if (Artisan::call('backup:clean') == 0) {
             Session::put('success', 'Backup deleted successfully.');
-            return redirect()->route('admin.home');
         } else {
             Session::put('failed', 'Backup delete failed.');
-            return redirect()->route('admin.home');
         }
+        return redirect()->route('admin.home');
     }
 }
